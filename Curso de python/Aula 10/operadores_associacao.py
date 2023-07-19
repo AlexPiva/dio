@@ -1,0 +1,11 @@
+# verifica se um objeto está em uma sequência
+
+curso = 'Curso de Python'
+frutas = ['laranja', 'uva', 'limão']
+saques = [1500, 100]
+
+print('Python' in curso)
+
+print('maça' not in frutas)
+
+print(200 in saques)
