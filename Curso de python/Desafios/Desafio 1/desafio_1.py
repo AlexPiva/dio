@@ -42,7 +42,7 @@ while True:
             print(erro)
         else:
             saldo += valor_deposito
-            extrato += f"Depósito: R$ {valor_deposito:.2f} - Saldo: R$ {saldo:.2f}\n"
+            extrato += f"Depósito: R$ {valor_deposito:.2f}\n"
 
     elif opcao.lower() == "s":
         valor_saque = float(input("Digite o valor do saque: R$ "))
@@ -58,12 +58,12 @@ while True:
             print(f"Valor máximo de R$ {limite:.2f} por saque excedido.")
 
         elif excedeu_saldo:
-            print('Não há saldo sificiente na conta para este valor!')
+            print('Não há saldo suficiente na conta para este valor!')
 
         elif valor_saque > 0:
             numero_saques += 1
             saldo -= valor_saque
-            extrato += f"Saque: R$ {valor_saque:.2f} - Saldo: R$ {saldo:.2f}\n"
+            extrato += f"Saque: R$ {valor_saque:.2f}\n"
 
         else:
             print(erro)
@@ -71,6 +71,7 @@ while True:
     elif opcao.lower() == "e":
         print(' EXTRATO '.center(40, '$') + '\n')
         print('Não foram realizadas movimentações.\n'.center(40) if not extrato else extrato)
+        print(f'Saldo: R$ {saldo:.2f}\n')
         print(''.center(40, '$') + '\n')
 
     elif opcao.lower() == "q":
