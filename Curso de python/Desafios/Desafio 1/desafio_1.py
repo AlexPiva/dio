@@ -1,6 +1,6 @@
 inicio = """
      Bem vindo(a) ao Banco Piva!!!
-    É sempre uma honra atende-lo(a).
+    É sempre uma honra atendê-lo(a).
 """
 menu = """
 Digite a opção desejada:
