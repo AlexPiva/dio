@@ -32,13 +32,13 @@ def menu():
     menu = """
         Digite a opção desejada:
 
-        [s]Sacar
-        [e]Extrato
-        [nc]Nova conta
-        [lc]Listar contas
-        [nu]Novo cliente
-        [q]Sair
-        [d]Depositar
+        [1]\tNovo cliente
+        [2]\tNova conta
+        [3]\tListar contas
+        [4]\tSacar
+        [5]\tDepositar
+        [6]\tExtrato
+        [7]\tSair
 
         => """
     return input(textwrap.dedent(menu))
@@ -163,8 +163,21 @@ def main():
     while True:
         opcao = menu()
 
-        if opcao.lower == "d":
-            valor = float(input("Digite o valor do depósito:"))
+        if opcao == "1":
+            criar_cliente(clientes)
+
+        elif opcao == "2":
+            numero_conta = len(contas) + 1
+            conta = criar_conta(AGENCIA, numero_conta, clientes)
+
+        if conta:
+            contas.append(conta)
+
+        elif opcao == "3":
+            listar_contas(contas)
+
+        elif opcao == "4":
+            valor = float(input("Informe o valor do saque: "))
 
             saldo, extrato = sacar(
                 saldo=saldo,
@@ -175,23 +188,15 @@ def main():
                 limite_saques=LIMITE_SAQUES,
             )
 
-        elif opcao.lower == "e":
+        elif opcao == "5":
+            valor = float(input("Digite o valor do depósito: "))
+
+            saldo, extrato = depositar(saldo, valor, extrato)
+
+        elif opcao == "6":
             exibir_extrato(saldo, extrato=extrato)
 
-        elif opcao.lower == "nu":
-            criar_cliente(clientes)
-
-        elif opcao.lower == "nc":
-            numero_conta = len(contas) + 1
-            conta = criar_conta(AGENCIA, numero_conta, clientes)
-
-            if conta:
-                contas.append(conta)
-
-        elif opcao.lower == 'lc':
-            listar_contas(contas)
-
-        elif opcao.lower == 'q':
+        elif opcao == "7":
             break
 
         else:
